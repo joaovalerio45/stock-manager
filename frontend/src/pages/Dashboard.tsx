@@ -1,8 +1,51 @@
 import { AlertTriangle, Clock, ArrowDownLeft, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useEffect, useState } from "react";
+import type { Document } from "../types/document";
+import { getRequests } from "../services/requestService";
+import { getDocuments } from "../services/documentService";
+import { getWarehouses, getWarehouseStock } from "../services/warehouseService";
 
 export function Dashboard() {
     const { t } = useLanguage();
+
+    const [pendingCount, setPendingCount] = useState<number>(0);
+    const [lowStockCount, setLowStockCount] = useState<number>(0);
+    const [recentEntries, setRecentEntries] = useState<Document[]>([]);
+    const [recentWithdrawals, setRecentWithdrawals] = useState<Document[]>([]);
+
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() =>{
+        (async function loadDashboardData() {
+            try{
+                setLoading(true);
+                const requests = await getRequests();
+                const pending = requests.filter((r) => r.state === 'PENDING' );
+                setPendingCount(pending.length);
+
+                const docs = await getDocuments();
+
+                const entries = docs.filter((d) => d.operationType === 'ENTRY').slice(0,5);
+                const withdrawals = docs.filter((d) => d.operationType === 'WITHDRAWAL').slice(0,5);
+
+                setRecentEntries(entries);
+                setRecentWithdrawals(withdrawals);
+
+                const warehouses = await getWarehouses();
+                const stockLists = await Promise.all(warehouses.map((w) => getWarehouseStock(w.id)))
+                const allStock = stockLists.flat();
+                const low = allStock.filter((l) => l.currentStock <= l.minimumStock);
+                setLowStockCount(low.length);
+
+            }catch(error){
+                console.error("Failed to fetch Dashboard data.", error);
+            }finally{
+                setLoading(false);
+            }
+        }, [])
+        loadDashboardData();
+    })
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
@@ -143,3 +186,4 @@ export function Dashboard() {
         </div>
     );
 }
+
