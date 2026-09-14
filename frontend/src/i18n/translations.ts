@@ -69,6 +69,24 @@ export const translations = {
     loading: 'A carregar dados...',
     noData: 'Sem registos encontrados.',
     errorOccurred: 'Ocorreu um erro ao carregar os dados.',
+
+    // Dashboard Specific
+    lowStockAlerts: 'Alertas de Stock Baixo',
+    itemsCountUnit: 'artigos',
+    belowMinStockDesc: 'Abaixo do stock mínimo configurado',
+    pendingRequests: 'Pedidos Pendentes',
+    requestsCountUnit: 'pedidos',
+    awaitingPreparationDesc: 'A aguardar preparação no armazém',
+    recentEntries: 'Últimas Entradas',
+    recentEntriesDesc: 'Últimos 5 documentos de fornecedores',
+    recentWithdrawals: 'Últimas Saídas',
+    recentWithdrawalsDesc: 'Últimos 5 consumos de departamentos',
+    docNumber: 'Nº Documento',
+    supplier: 'Fornecedor',
+    destinationArea: 'Destino (Área)',
+    quantityShort: 'Qtd',
+    noEntriesRecorded: 'Sem entradas registadas.',
+    noWithdrawalsRecorded: 'Sem saídas registadas.',
   },
   en: {
     // Navigation & App
@@ -138,6 +156,24 @@ export const translations = {
     loading: 'Loading data...',
     noData: 'No records found.',
     errorOccurred: 'An error occurred while loading data.',
+
+    // Dashboard Specific
+    lowStockAlerts: 'Low Stock Alerts',
+    itemsCountUnit: 'items',
+    belowMinStockDesc: 'Below configured minimum stock',
+    pendingRequests: 'Pending Requests',
+    requestsCountUnit: 'requests',
+    awaitingPreparationDesc: 'Awaiting warehouse preparation',
+    recentEntries: 'Recent Entries',
+    recentEntriesDesc: 'Latest 5 supplier documents',
+    recentWithdrawals: 'Recent Withdrawals',
+    recentWithdrawalsDesc: 'Latest 5 department consumptions',
+    docNumber: 'Doc Number',
+    supplier: 'Supplier',
+    destinationArea: 'Destination (Area)',
+    quantityShort: 'Qty',
+    noEntriesRecorded: 'No entries recorded.',
+    noWithdrawalsRecorded: 'No withdrawals recorded.',
   },
 }
 
