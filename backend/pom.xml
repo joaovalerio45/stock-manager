@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pt.armazem</groupId>
-	<artifactId>gestao-stock</artifactId>
+	<artifactId>stock-manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>stock-manager</name>
+	<description>Stock and warehouse management system</description>
 	<url/>
 	<licenses>
 		<license/>
