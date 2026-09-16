@@ -1,4 +1,4 @@
-package pt.armazem.stockmanager.services;
+  package pt.armazem.stockmanager.services;
 
 import java.math.BigDecimal;
 import java.util.List;
